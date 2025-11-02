@@ -6,7 +6,7 @@ Aaj hum ek bahut hi important topic par discuss karenge jo aapke RHCSA aur RHCE 
 
 ---
 
-## ������ RHCSA + RHCE Training Lesson: Ansible Setup - Control Node & Inventory
+## RHCSA + RHCE Training Lesson: Ansible Setup - Control Node & Inventory
 
 ### 1. Concept Explanation (Hinglish)
 
