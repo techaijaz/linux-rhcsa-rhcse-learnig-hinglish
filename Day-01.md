@@ -268,9 +268,8 @@ Chaliye kuch real-world scenarios dekhte hain:
 
 5.  **`index.html` file mein kuch content add karein (for demonstration):**
     ```bash
-    echo "
-Hello World!
-" > index.html
+    echo "Hello World!" > index.html
+    ```
     cat index.html
     # Expected output: 
 Hello World!
