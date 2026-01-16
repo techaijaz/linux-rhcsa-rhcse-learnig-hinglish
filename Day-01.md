@@ -271,8 +271,8 @@ Chaliye kuch real-world scenarios dekhte hain:
     echo "Hello World!" > index.html
     ```
     cat index.html
-    # Expected output: 
-Hello World!
+    ** Expected output: 
+      Hello World!
 
     ```
     *Hinglish:* "Ab `index.html` khaali nahi hai, usme content hai."
