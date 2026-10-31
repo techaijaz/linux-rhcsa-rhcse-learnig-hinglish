@@ -102,7 +102,7 @@ Yahaan kuch important commands hain jo hum is lesson mein cover karenge:
 
 ---
 
-### 3. Step-by-Step Examples (कदम-दर-कदम उदाहरण)
+### 3. Step-by-Step Examples
 
 Chalo, ek scenario imagine karte hain. Aapko ek naye server par kuch initial setup aur file management karna hai.
 
@@ -306,9 +306,9 @@ for i in $(seq 1 100); do echo "Log entry number $i for server activity." >> lar
 
 ---
 
-### 4. Practice Tasks (अभ्यास कार्य)
+### 4. Practice Tasks
 
-Chalo ab aap khud in commands ko practice karo. Apne `my_project` directory ke bahar ek naya directory banao aur wahan practice karo, ya `my_project` ko delete karke naye सिरे से shuru karo.
+Chalo ab aap khud in commands ko practice karo. Apne `my_project` directory ke bahar ek naya directory banao aur wahan practice karo, ya `my_project` ko delete karke naye shuru karo.
 
 **Task 1: Directory Structure Create Karna**
 1.  Apni home directory (`cd ~`) mein ek naya directory banao `my_workspace`.
@@ -352,10 +352,10 @@ Chalo ab aap khud in commands ko practice karo. Apne `my_project` directory ke b
 
 ---
 
-### 5. Pro Tips / Common Mistakes (प्रो टिप्स / सामान्य गलतियाँ)
+### 5. Pro Tips / Common Mistakes
 
 #### Pro Tips:
-1.  **Tab Completion (टैब कंप्लीशन):** Iska bharpoor istemal karo! Jab bhi aap koi command type karte ho aur file/directory ka naam aadha likhte ho, `Tab` dabane se Linux baki naam autocomplete kar deta hai. Yeh type karne mein time bachata hai aur typos se bachata hai.
+1.  **Tab Completion:** Iska bharpoor istemal karo! Jab bhi aap koi command type karte ho aur file/directory ka naam aadha likhte ho, `Tab` dabane se Linux baki naam autocomplete kar deta hai. Yeh type karne mein time bachata hai aur typos se bachata hai.
     *   Example: `ls /var/l` -> `ls /var/log/`
 2.  **`man` Pages:** Har command ka apna manual page hota hai. Agar kisi command ya option ke baare mein detail jaankari chahiye, toh `man command_name` type karo (e.g., `man ls`). `q` se exit hota hai.
 3.  **Absolute vs. Relative Paths:**
@@ -372,7 +372,7 @@ Chalo ab aap khud in commands ko practice karo. Apne `my_project` directory ke b
     *   `>>` (Append stdout): Command ke output ko ek file mein append karna. Example: `echo "New log entry" >> /var/log/mylogs.log`.
 6.  **`tail -F` vs `tail -f` (RHCE Tip):** `tail -F` zyada robust hai. Agar jis log file ko aap monitor kar rahe ho, woh rotate ho (yani purani file ko rename karke nayi empty file bana di jaye), toh `tail -f` purani (ab renamed) file ko hi follow karta rahega. `tail -F` naye recreated file ko automatically follow karega.
 
-#### Common Mistakes (सामान्य गलतियाँ):
+#### Common Mistakes:
 1.  **`rm -rf /` or `rm -rf *` in wrong directory:** **Yeh sabse khatarnak command hai!** Root directory (`/`) par `rm -rf` chalana aapke poore system ko delete kar sakta hai. Kabhi bhi `rm -rf` commands chalate waqt double check karein ki aap sahi directory mein hain ya nahi aur sahi files ko target kar rahe hain ya nahi. `rm -rf *` current directory ke saare contents delete kar dega.
 2.  **Overwriting Files without Confirmation:** `cp` ya `mv` karte waqt `-i` option ka istemal na karna purani files ko bina poochhe overwrite kar sakta hai. Hamesha `-i` use karein agar aapko overwrite ke baare mein unsure ho.
 3.  **Forgetting `-r` for Directories:** `cp` ya `rm` karte waqt directories ke liye `-r` (recursive) option bhool jaana. Example: `rm my_directory` kaam nahi karega, aapko `rm -r my_directory` use karna padega.
