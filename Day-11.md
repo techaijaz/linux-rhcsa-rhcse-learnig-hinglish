@@ -14,33 +14,33 @@ Iss lesson mein, hum `useradd`, `passwd`, `/etc/passwd` jaise commands aur files
 
 ---
 
-### **1. Introduction (परिचय)**
+### **1. Introduction**
 
 Linux systems mein, har action ek user ke through hota hai. Users ko organize aur permissions assign karne ke liye groups ka use hota hai. Agar aap ek system administrator ban'na chahte hain, toh users aur groups ko manage karna aapki pehli priority honi chahiye.
 
 *   **RHCSA Perspective:** Basic user/group creation, modification, deletion aur file permissions.
 *   **RHCE Perspective:** Default user creation process ko samajhna, advanced options, troubleshooting, aur security implications.
 
-**Prerequisites (ज़रूरी बातें):**
+**Prerequisites:**
 *   Basic Linux command-line knowledge.
 *   Root access ya `sudo` privileges.
 
 ---
 
-### **2. Key Concepts (मुख्य अवधारणाएं)**
+### **2. Key Concepts**
 
 Chaliye, pehle kuch basic terms samajh lete hain:
 
-*   **User (उपयोगकर्ता):** Ek individual entity jo system ko access karti hai. Har user ka apna ek unique identification number hota hai.
-*   **Group (समूह):** Users ka collection jinhe similar permissions ki zaroorat hoti hai.
+*   **User:** Ek individual entity jo system ko access karti hai. Har user ka apna ek unique identification number hota hai.
+*   **Group:** Users ka collection jinhe similar permissions ki zaroorat hoti hai.
 *   **UID (User ID):** Har user ka ek unique numerical ID. Default users (jaise `root`) ke fixed UIDs hote hain. System users ke UIDs typically 1-999 ke beech hote hain, aur normal users ke UIDs 1000 se shuru hote hain (yeh `/etc/login.defs` mein define hota hai).
 *   **GID (Group ID):** Har group ka ek unique numerical ID. Similar to UIDs, system groups ke GIDs bhi 1-999 ke beech hote hain, aur normal groups ke 1000 se shuru hote hain.
-*   **Primary Group (प्राथमिक समूह):** Jab ek user create hota hai, toh automatically ussi naam ka ek group ban jaata hai (by default), aur woh us user ka primary group hota hai. User ki files by default is group ki ownership mein hoti hain.
-*   **Secondary Groups (द्वितीयक समूह):** Ek user ek se zyada groups ka member ho sakta hai. Primary group ke alava baki sab secondary groups hote hain. Yeh additional permissions provide karte hain.
+*   **Primary Group:** Jab ek user create hota hai, toh automatically ussi naam ka ek group ban jaata hai (by default), aur woh us user ka primary group hota hai. User ki files by default is group ki ownership mein hoti hain.
+*   **Secondary Groups:** Ek user ek se zyada groups ka member ho sakta hai. Primary group ke alava baki sab secondary groups hote hain. Yeh additional permissions provide karte hain.
 
 ---
 
-### **3. User Management Commands (उपयोगकर्ता प्रबंधन कमांड्स)**
+### **3. User Management Commands**
 
 #### **3.1. `useradd` - Naya User Create Karna (Creating a New User)**
 
@@ -51,7 +51,7 @@ Chaliye, pehle kuch basic terms samajh lete hain:
 sudo useradd [options] username
 ```
 
-**Common Options (आम विकल्प):**
+**Common Options:**
 
 *   `-m` (or `--create-home`): Agar user ke liye home directory nahi bani hai, toh yeh option use karke ban jayegi. (By default, `useradd` home directory nahi banata agar `/etc/login.defs` mein `CREATE_HOME` set nahi hai, toh always use `-m` for human users).
     *   *Explanation:* "Home directory banata hai, jahan user ki personal files store hoti hain."
@@ -179,7 +179,7 @@ id [username]
 
 ---
 
-### **4. User Information Files (उपयोगकर्ता जानकारी फाइलें)**
+### **4. User Information Files**
 
 Yeh files user aur group management ki backbone hain. Inhe direct edit karna generally recommended nahi hai, par inka structure samajhna bahut zaroori hai.
 
@@ -195,13 +195,13 @@ username:password_placeholder:UID:GID:GECOS:home_directory:shell
 
 **Field Explanations:**
 
-1.  **username (उपयोगकर्ता नाम):** User account ka login name.
-2.  **password_placeholder (पासवर्ड प्लेसहोल्डर):** Yahan `x` hota hai, jo indicate karta hai ki password hash `/etc/shadow` file mein store hai. Pehle yahan encrypted password hota tha.
+1.  **username:** User account ka login name.
+2.  **password_placeholder:** Yahan `x` hota hai, jo indicate karta hai ki password hash `/etc/shadow` file mein store hai. Pehle yahan encrypted password hota tha.
 3.  **UID (User ID):** User ka unique numerical ID. `root` user ka UID 0 hota hai. System users (daemon accounts) ka 1-999 ke beech hota hai, aur normal users ka 1000 se start hota hai (default).
 4.  **GID (Primary Group ID):** User ke primary group ka numerical ID.
 5.  **GECOS (General Electric Comprehensive Operating System):** Ek comment field jisme user ka full name, office location, contact info, etc. ho sakti hai. `useradd -c` option se set hota hai.
-6.  **home_directory (होम डायरेक्टरी):** User ki home directory ka absolute path. Jab user login karta hai, toh woh is directory mein aata hai.
-7.  **shell (शैल):** User ka default login shell. (e.g., `/bin/bash`, `/bin/sh`). Agar `/sbin/nologin` set hai, toh user interactive login nahi kar payega.
+6.  **home_directory:** User ki home directory ka absolute path. Jab user login karta hai, toh woh is directory mein aata hai.
+7.  **shell:** User ka default login shell. (e.g., `/bin/bash`, `/bin/sh`). Agar `/sbin/nologin` set hai, toh user interactive login nahi kar payega.
 
 **Example entry (ek user 'rahul' ke liye):**
 ```
@@ -220,7 +220,7 @@ username:encrypted_password:last_change_date:min_days:max_days:warn_days:inactiv
 **Key Field Explanations:**
 
 1.  **username:** User account ka login name.
-2.  **encrypted_password (एन्क्रिप्टेड पासवर्ड):** User ke password ka hash. Agar yeh field empty ho, toh password set nahi hai. Agar `!` ya `*` se start ho, toh account locked hai.
+2.  **encrypted_password:** User ke password ka hash. Agar yeh field empty ho, toh password set nahi hai. Agar `!` ya `*` se start ho, toh account locked hai.
 3.  **last_change_date:** Last password change ke baad se January 1, 1970 se days count.
 4.  **min_days:** Minimum days jinse pehle password change nahi kiya ja sakta.
 5.  **max_days:** Maximum days jinse baad password change karna zaroori hai.
@@ -245,10 +245,10 @@ groupname:password_placeholder:GID:member_list
 
 **Field Explanations:**
 
-1.  **groupname (समूह का नाम):** Group ka naam.
+1.  **groupname:** Group ka naam.
 2.  **password_placeholder:** Yahan bhi `x` ya empty hota hai. Groups ke liye passwords rarely use hote hain.
 3.  **GID (Group ID):** Group ka unique numerical ID.
-4.  **member_list (सदस्य सूची):** Users ki comma-separated list jo is group ke secondary members hain. Primary members yahan list nahi hote.
+4.  **member_list:** Users ki comma-separated list jo is group ke secondary members hain. Primary members yahan list nahi hote.
 
 **Example entry:**
 ```
@@ -309,7 +309,7 @@ developers:x:1002:ramesh,anjali
     *   *Explanation:* "Yeh useradd command ke liye specific default values set karti hai."
 
 *   **`/etc/skel`:**
-    *   `skel` ka matlab hai "skeleton" (ढांचा). Is directory mein jo bhi files aur directories hoti hain, woh naye user ki home directory mein automatically copy ho jaati hain jab `-m` option use kiya jaata hai.
+    *   `skel` ka matlab hai "skeleton". Is directory mein jo bhi files aur directories hoti hain, woh naye user ki home directory mein automatically copy ho jaati hain jab `-m` option use kiya jaata hai.
     *   *Check content:* `ls -a /etc/skel`
     *   *Typically includes:* `.bashrc`, `.bash_profile`, `.profile`, `.vimrc`, etc.
     *   *Explanation:* "Naye user ki home directory mein default files (jaise shell configuration files) ko copy karne ke liye yeh template directory hai."
@@ -430,7 +430,7 @@ sudo userdel [options] username
 
 ---
 
-### **6. Practice Tasks (अभ्यास कार्य)**
+### **6. Practice Tasks**
 
 Chaliye, ab kuch hands-on practice karte hain. Apne Linux terminal par yeh commands run karein:
 
@@ -537,7 +537,7 @@ Chaliye, ab kuch hands-on practice karte hain. Apne Linux terminal par yeh comma
 
 ---
 
-### **7. Key Takeaways (मुख्य बातें)**
+### **7. Key Takeaways**
 
 *   `useradd`: Naye users banane ke liye. `-m`, `-s`, `-c`, `-g`, `-G`, `-u` jaise options use karna seekha.
 *   `passwd`: Users ke passwords set aur manage karne ke liye. `-l`, `-u` options important hain.
@@ -550,8 +550,8 @@ Chaliye, ab kuch hands-on practice karte hain. Apne Linux terminal par yeh comma
 
 ---
 
-### **8. Next Steps (आगे क्या करें?)**
+### **8. Next Steps**
 
 User aur group management ke baad, sabse natural next topic hai **File Permissions (chmod, chown, umask)**. Yeh directly relate karta hai ki kaun sa user/group kis file ya directory ko access kar sakta hai.
 
-Umeed hai yeh detailed lesson aapke liye helpful raha hoga! Agar koi sawal ho, toh zaroor poochiye. Keep practicing! All the best! ������
+Umeed hai yeh detailed lesson aapke liye helpful raha hoga! Agar koi sawal ho, toh zaroor poochiye. Keep practicing! All the best!
